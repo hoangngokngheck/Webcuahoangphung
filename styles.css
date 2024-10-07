@@ -1,0 +1,97 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('images/background.jpg') no-repeat center center fixed; 
+    background-size: cover;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px; /* Tạo khoảng trống để thông điệp nằm phía dưới */
+}
+
+button {
+    margin: 15px;
+    background-color: #ff007f;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ff3366;
+}
+
+#agree-button {
+    background-color: #4CAF50; /* Nút đồng ý có màu xanh */
+}
+
+#agree-button:hover {
+    background-color: #45a049; /* Màu khi hover */
+}
+
+#refuse-button {
+    background-color: #f44336; /* Nút từ chối có màu đỏ */
+}
+
+/* Định dạng thông điệp hiển thị */
+#message {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff007f;
+    margin-top: 15px; /* Tạo khoảng cách với dòng chữ chính */
+}
+
+.hidden {
+    display: none;
+}
+
+/* Hiệu ứng rơi trái tim */
+.falling-hearts {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: url('images/heart.jpg') no-repeat center center;
+    background-size: contain;
+    animation: fall linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}

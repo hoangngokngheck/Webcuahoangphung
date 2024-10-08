@@ -16,21 +16,22 @@ body, html {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 90%; /* Giới hạn chiều rộng trên thiết bị nhỏ */
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 32px;
     color: #333;
     margin-bottom: 20px; /* Tạo khoảng trống để thông điệp nằm phía dưới */
 }
 
 button {
-    margin: 15px;
+    margin: 10px;
     background-color: #ff007f;
     color: white;
     border: none;
-    padding: 15px 30px;
-    font-size: 20px;
+    padding: 15px 20px; /* Giảm padding để nút vừa với màn hình nhỏ */
+    font-size: 18px; /* Giảm kích thước chữ */
     cursor: pointer;
     border-radius: 8px;
     transition: 0.3s;
@@ -54,10 +55,10 @@ button:hover {
 
 /* Định dạng thông điệp hiển thị */
 #message {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: bold;
     color: #ff007f;
-    margin-top: 15px; /* Tạo khoảng cách với dòng chữ chính */
+    margin-top: 20px; /* Tạo khoảng cách với dòng chữ chính */
 }
 
 .hidden {
@@ -77,8 +78,8 @@ button:hover {
 
 .heart {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 25px; /* Giảm kích thước trái tim cho phù hợp với màn hình nhỏ */
+    height: 25px;
     background: url('images/heart.jpg') no-repeat center center;
     background-size: contain;
     animation: fall linear infinite;
@@ -93,5 +94,25 @@ button:hover {
     100% {
         transform: translateY(100vh) rotate(720deg);
         opacity: 0;
+    }
+}
+
+/* Media query tối ưu trên các thiết bị có màn hình nhỏ */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px; /* Giảm kích thước chữ trên màn hình nhỏ */
+    }
+
+    button {
+        padding: 12px 18px; /* Giảm padding cho nút */
+        font-size: 16px;
+    }
+
+    #message {
+        font-size: 22px;
+    }
+
+    .container {
+        max-width: 95%; /* Chiều rộng hộp vừa vặn với màn hình nhỏ */
     }
 }

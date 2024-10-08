@@ -5,34 +5,43 @@ window.onload = function() {
     var container = document.querySelector(".container");
     var fallingHearts = document.querySelector(".falling-hearts");
 
-    var moveCount = 0;
+    var moveCount = 0;  // Số lần di chuột vào nút Không Đồng Ý
+    var clickCount = 0; // Số lần nhấn vào nút Không Đồng Ý
 
     // Sự kiện khi nhấn nút đồng ý
     agreeButton.addEventListener("click", function() {
-        // Ẩn các nút sau khi nhấn
         agreeButton.style.display = "none";
         refuseButton.style.display = "none";
-
-        // Hiển thị thông điệp
         message.classList.remove("hidden");
 
-        // Gọi hàm tạo hiệu ứng trái tim rơi
-        createHearts();
+        createHearts();  // Gọi hàm tạo hiệu ứng trái tim rơi
+    });
+
+    // Sự kiện khi nhấn vào nút không đồng ý
+    refuseButton.addEventListener("click", function() {
+        clickCount++;
+        if (clickCount >= 3) {
+            refuseButton.style.display = "none";  // Ẩn nút sau 3 lần nhấn
+        }
     });
 
     // Sự kiện khi di chuột vào nút không đồng ý
     refuseButton.addEventListener("mouseover", function() {
         moveCount++;
 
-        // Nút không đồng ý chạy ra chỗ khác
-        var newLeft = Math.floor(Math.random() * (container.offsetWidth - refuseButton.offsetWidth)) + "px";
-        var newTop = Math.floor(Math.random() * (container.offsetHeight - refuseButton.offsetHeight)) + "px";
-        refuseButton.style.position = "absolute";
-        refuseButton.style.left = newLeft;
-        refuseButton.style.top = newTop;
+        var containerWidth = container.clientWidth;
+        var containerHeight = container.clientHeight;
 
-        // Khi đã di chuột đến nút không đồng ý 3 lần thì biến mất
-        if (moveCount >= 3) {
+        // Đảm bảo nút không chạy ra ngoài màn hình
+        var newLeft = Math.floor(Math.random() * (containerWidth - refuseButton.offsetWidth));
+        var newTop = Math.floor(Math.random() * (containerHeight - refuseButton.offsetHeight));
+        
+        refuseButton.style.position = "absolute";
+        refuseButton.style.left = newLeft + "px";
+        refuseButton.style.top = newTop + "px";
+
+        // Khi đã di chuột đến nút không đồng ý 5 lần thì biến mất
+        if (moveCount >= 5) {
             refuseButton.style.display = "none";
         }
     });
